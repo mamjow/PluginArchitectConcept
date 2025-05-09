@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Management;
 using System.Net.Http;
-using DxErpIntegration.Db;
+using pluginA.Db;
 
-namespace DxErpIntegration.Service
+namespace pluginA.Service
 {
     public class ServiceStatusChecker
     {

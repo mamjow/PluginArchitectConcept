@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DxErpIntegration.Db.Models
+namespace pluginA.Db.Models
 {
     public class DxMessage
     {

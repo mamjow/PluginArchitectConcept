@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DxErpIntegration
+namespace pluginA
 {
     partial class TestPanel
     {

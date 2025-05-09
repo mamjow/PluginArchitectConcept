@@ -128,7 +128,7 @@
             MainMenuStrip = menuStrip1;
             Margin = new Padding(4, 3, 4, 3);
             Name = "MainForm";
-            Text = "Cadmes Rx-Tool";
+            Text = "Rx-Tool";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

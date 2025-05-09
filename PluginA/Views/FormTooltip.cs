@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DxErpIntegration
+namespace pluginA
 {
     public partial class FormTooltip : Form
     {

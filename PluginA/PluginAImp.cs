@@ -1,17 +1,15 @@
-﻿using DxErpIntegration.Service;
+﻿using pluginA.Service;
 using Microsoft.Extensions.DependencyInjection;
 using Contract;
 using System;
 using System.Windows.Forms;
 
-namespace DxErpIntegration
+namespace pluginA
 {
-    public class ErpIntegrationAnalyzerPlugin : IPlugin
+    public class PluginAImp : IPlugin
     {
         public float Version => 1.0f;
-
-        public string Name => "Erp Framework Integration Analyzer";
-
+        public string Name => "Plugin A";
         public Form Execute(IServiceProvider provider)
         {
             var form = provider.GetRequiredService<TestPanel>();

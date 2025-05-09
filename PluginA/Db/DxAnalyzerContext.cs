@@ -1,7 +1,7 @@
-﻿using DxErpIntegration.Db.Models;
+﻿using pluginA.Db.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DxErpIntegration.Db
+namespace pluginA.Db
 {
     public class DxAnalyzerContext : DbContext
     {

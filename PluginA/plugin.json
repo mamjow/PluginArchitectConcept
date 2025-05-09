@@ -1,5 +1,4 @@
 {
-  "Name": "DxErpIntegration",
-  "MainClass": "DxErpIntegration.ErpIntegrationAnalyzerPlugin",
-  "UseIsolatedDI": true
+  "Name": "pluginA",
+  "MainClass": "pluginA.PluginAImp"
 }
