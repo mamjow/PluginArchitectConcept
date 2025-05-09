@@ -71,7 +71,7 @@ namespace CoreApp
 
                 if (!File.Exists(mainDll)) continue;
 
-                var context = new PluginLoadContext(folder, mainDll);
+                var context = new PluginLoadContext( mainDll);
                 var assembly = context.LoadFromAssemblyPath(mainDll);
 
                 var pluginType = assembly.GetType(metadata!.MainClass);

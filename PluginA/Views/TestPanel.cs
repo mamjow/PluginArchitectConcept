@@ -29,7 +29,7 @@ namespace pluginA
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-			_serviceStatus.CheckServiceStatus("localhost", "someservice");
+			_serviceStatus.CheckServiceStatus("localhost", "MSSQLSERVER");
 		}
 	}
 }

@@ -4,8 +4,12 @@
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
 		<OutputType>Library</OutputType>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<Nullable>enable</Nullable>
 		<EnableDynamicLoading>true</EnableDynamicLoading>
+		<IncludeRuntimeDependency>false</IncludeRuntimeDependency>
+		<!-- Optional -->
+		<CopyLocalRuntimeTargetAssets>false</CopyLocalRuntimeTargetAssets>
 	</PropertyGroup>
 
 
@@ -37,7 +41,7 @@
 			<DestinationDir>..\CoreApp\bin\$(Configuration)\net8.0-windows\Plugins\$(ProjectName)\</DestinationDir>
 		</PropertyGroup>
 		<ItemGroup>
-			<FilesToCopy Include="$(OutputPath)**\*.*" />
+			<FilesToCopy Include="$(OutputPath)**\*.*" Condition="'$(ProjectName)' != 'PluginContract'" />
 		</ItemGroup>
 		<Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(DestinationDir)%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
 	</Target>

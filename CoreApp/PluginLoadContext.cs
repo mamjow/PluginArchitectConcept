@@ -5,79 +5,55 @@ namespace CoreApp
 {
     public class PluginLoadContext : AssemblyLoadContext
     {
-        private readonly string _pluginPath;
+        private readonly string? _pluginPath;
         private readonly AssemblyDependencyResolver _resolver;
 
-        public PluginLoadContext(string pluginPath, string pluginFile) : base(isCollectible: true)
+        public PluginLoadContext( string pluginFile) : base(isCollectible: true)
         {
             _resolver = new AssemblyDependencyResolver(pluginFile);
-            _pluginPath = pluginPath;
+            _pluginPath = Path.GetDirectoryName(pluginFile);
         }
 
+		/// <summary>
+		/// Load assembely from the plugin path in isolation but including the loaded assembly in the current app domain
+		/// </summary>
+		/// <param name="assemblyName"></param>
+		/// <returns></returns>
         protected override Assembly? Load(AssemblyName assemblyName)
         {
 
+			// Check if the assembly is already loaded
+			var loadedAssembly = AppDomain.CurrentDomain.GetAssemblies()
+				.FirstOrDefault(a => a.GetName().Name == assemblyName.Name);
 
+			if (loadedAssembly != null)
+			{
+				return loadedAssembly;
+			}
 
+			// For other assemblies, load from the plugin folder or resolve dependencies
 			string assemblyPath = Path.Combine(_pluginPath, $"{assemblyName.Name}.dll");
-            if (File.Exists(assemblyPath))
-            {
-                return LoadFromAssemblyPath(assemblyPath);
-            }
+			if (File.Exists(assemblyPath))
+			{
+				return LoadFromAssemblyPath(assemblyPath);
+			}
 
+			// Resolve any additional dependencies
+			return ResolveDependency(assemblyName);
+		}
 
-            return ResolveDependency(assemblyName);
-        }
-
-        //protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
-        //{
-        //    string libraryPath = _resolver.ResolveUnmanagedDllToPath(unmanagedDllName);
-        //    if (libraryPath != null)
-        //    {
-        //        return LoadUnmanagedDllFromPath(libraryPath);
-        //    }
-
-        //    return IntPtr.Zero;
-        //}
-
-        private Assembly ResolveDependency(AssemblyName assemblyName)
-        {
-            string dependencyPath = Path.Combine(_pluginPath, $"{assemblyName.Name}.dll");
-            if (File.Exists(dependencyPath))
-            {
-                return LoadFromAssemblyPath(dependencyPath);
-            }
-
-            try
-            {
-                return Default.LoadFromAssemblyName(assemblyName);
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private static bool IsSharedAssembly(AssemblyName assemblyName)
-        {
-            // Load the assembly to get its physical location
-            var assembly = Assembly.Load(assemblyName);
-            var location = assembly.Location;
-
-            // Check if the assembly comes from the shared .NET framework folder
- 
-
-            var sharedPrefixes = new[]
-             {
-                "Microsoft.Extensions.DependencyInjection",  // Dependency Injection
-                "Microsoft.NETCore.App",                    // .NET Core runtime
-                "Microsoft.WindowsDesktop.App.WindowsForms", // Windows Forms
-                "Microsoft.EntityFrameworkCore", // Windows Forms
-             };
-
-            var isDotnetShared =  location.Contains(@"\dotnet\shared\", StringComparison.OrdinalIgnoreCase);
-            var isShared = sharedPrefixes.Any(prefix => assemblyName.Name.StartsWith(prefix, StringComparison.OrdinalIgnoreCase));
-            return isDotnetShared || isShared;
-        }
+		private Assembly ResolveDependency(AssemblyName assemblyName)
+		{
+			try
+			{
+				
+				return Default.LoadFromAssemblyName(assemblyName);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error loading dependency {assemblyName.Name}: {ex.Message}");
+				return null;
+			}
+		}
     }
 }
