@@ -1,0 +1,5 @@
+{
+  "Name": "DxErpIntegration",
+  "MainClass": "DxErpIntegration.ErpIntegrationAnalyzerPlugin",
+  "UseIsolatedDI": true
+}
