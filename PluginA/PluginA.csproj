@@ -24,7 +24,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Contract\PluginContract.csproj">
 			<Private>false</Private>
-
 		</ProjectReference>
 	</ItemGroup>
 

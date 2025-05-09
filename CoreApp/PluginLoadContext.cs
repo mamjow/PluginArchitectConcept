@@ -17,7 +17,9 @@ namespace CoreApp
         protected override Assembly? Load(AssemblyName assemblyName)
         {
 
-            string assemblyPath = Path.Combine(_pluginPath, $"{assemblyName.Name}.dll");
+
+
+			string assemblyPath = Path.Combine(_pluginPath, $"{assemblyName.Name}.dll");
             if (File.Exists(assemblyPath))
             {
                 return LoadFromAssemblyPath(assemblyPath);

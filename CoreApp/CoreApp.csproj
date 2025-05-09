@@ -15,7 +15,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Contract\PluginContract.csproj" />
+		<ProjectReference Include="..\Contract\PluginContract.csproj">
+
+		</ProjectReference>
 	</ItemGroup>
 
 </Project>
