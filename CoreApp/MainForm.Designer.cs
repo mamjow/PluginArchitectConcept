@@ -40,12 +40,13 @@
             checkForUpdatesToolStripMenuItem = new ToolStripMenuItem();
             aboutUsToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem1 = new ToolStripMenuItem();
+            cGCollectToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { applicationToolStripMenuItem, AddinToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { applicationToolStripMenuItem, AddinToolStripMenuItem, helpToolStripMenuItem, cGCollectToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
@@ -102,20 +103,27 @@
             // checkForUpdatesToolStripMenuItem
             // 
             checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            checkForUpdatesToolStripMenuItem.Size = new Size(170, 22);
+            checkForUpdatesToolStripMenuItem.Size = new Size(180, 22);
             checkForUpdatesToolStripMenuItem.Text = "Check for updates";
             // 
             // aboutUsToolStripMenuItem
             // 
             aboutUsToolStripMenuItem.Name = "aboutUsToolStripMenuItem";
-            aboutUsToolStripMenuItem.Size = new Size(170, 22);
+            aboutUsToolStripMenuItem.Size = new Size(180, 22);
             aboutUsToolStripMenuItem.Text = "About us";
             // 
             // helpToolStripMenuItem1
             // 
             helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            helpToolStripMenuItem1.Size = new Size(170, 22);
+            helpToolStripMenuItem1.Size = new Size(180, 22);
             helpToolStripMenuItem1.Text = "Help";
+            // 
+            // cGCollectToolStripMenuItem
+            // 
+            cGCollectToolStripMenuItem.Name = "cGCollectToolStripMenuItem";
+            cGCollectToolStripMenuItem.Size = new Size(75, 20);
+            cGCollectToolStripMenuItem.Text = "CG.Collect";
+            cGCollectToolStripMenuItem.Click += cGCollectToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -149,6 +157,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutUsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator SeparatortoolStrip;
+        private ToolStripMenuItem cGCollectToolStripMenuItem;
     }
 }
 

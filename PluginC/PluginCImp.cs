@@ -1,17 +1,17 @@
 ﻿using Contract;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using pluginA.Db;
-using pluginA.Service;
+using pluginC.Db;
+using pluginC.Service;
 using System;
 using System.Windows.Forms;
 
-namespace pluginA
+namespace pluginC
 {
-    public class PluginAImp : IPlugin
+    public class PluginCImp : IPlugin
     {
         public float Version => 1.0f;
-        public string Name => "Plugin A";
+        public string Name => "Plugin C";
         public Form Execute(IServiceProvider provider)
         {
             try

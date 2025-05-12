@@ -1,0 +1,4 @@
+{
+  "Name": "pluginC",
+  "MainClass": "pluginC.PluginCImp"
+}

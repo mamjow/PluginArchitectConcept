@@ -7,6 +7,8 @@ namespace CoreApp
     public partial class MainForm : Form
     {
         public record LoadedPlugin(IPlugin Instance, PluginMetadata Metadata);
+
+        List<PluginLoadContext> _pluginLoadContexts = new List<PluginLoadContext>();
         public MainForm()
         {
             InitializeComponent();
@@ -71,7 +73,11 @@ namespace CoreApp
 
                 if (!File.Exists(mainDll)) continue;
 
-                var context = new PluginLoadContext( mainDll);
+                var context = new PluginLoadContext(mainDll);
+
+                // save them so CG not mess with it ?
+                //_pluginLoadContexts.Add(context);
+
                 var assembly = context.LoadFromAssemblyPath(mainDll);
 
                 var pluginType = assembly.GetType(metadata!.MainClass);
@@ -84,6 +90,12 @@ namespace CoreApp
                 }
             }
             return plugins;
+        }
+
+        private void cGCollectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
     }
 }

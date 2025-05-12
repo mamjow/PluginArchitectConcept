@@ -1,0 +1,4 @@
+{
+  "Name": "pluginB",
+  "MainClass": "pluginB.PluginBImp"
+}

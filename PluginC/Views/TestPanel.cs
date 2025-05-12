@@ -1,14 +1,13 @@
-﻿using pluginA.Service;
+﻿using pluginC.Service;
 using System;
 using System.Windows.Forms;
 
 
-namespace pluginA
+namespace pluginC
 {
     public partial class TestPanel : Form
     {
         ServiceStatusChecker _serviceStatus;
-        private BindingSource _feedbackBindingSource;
 
         public TestPanel(ServiceStatusChecker sd)
         {

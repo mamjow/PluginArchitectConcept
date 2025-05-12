@@ -1,8 +1,7 @@
-﻿
+﻿using pluginB.Db.Models;
 using Microsoft.EntityFrameworkCore;
-using pluginA.Db.Models;
 
-namespace pluginA.Db
+namespace pluginB.Db
 {
     public class DxAnalyzerContext : DbContext
     {
